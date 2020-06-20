@@ -1,0 +1,28 @@
+apply plugin: 'java-library'
+apply plugin: 'maven'
+//apply plugin: 'com.novoda.bintray-release'
+
+dependencies {
+    implementation fileTree(dir: 'libs',includes: ['*.jar'])
+
+    implementation gradleApi()
+    implementation localGroovy()
+
+    implementation 'com.android.tools.build:gradle:4.0.0'
+
+    //ASM相关依赖
+    implementation 'org.ow2.asm:asm:7.2'
+    implementation 'org.ow2.asm:asm-commons:7.2'
+}
+
+
+group = 'com.phl.print.transform'
+version = '1.0.0'
+
+uploadArchives{
+    repositories {
+        mavenDeployer{
+            repository(url:uri('../print_transform_repo'))
+        }
+    }
+}

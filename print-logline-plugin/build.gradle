@@ -1,0 +1,46 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+apply plugin: 'com.novoda.bintray-release'
+
+buildscript {
+    repositories {
+        maven { url 'E:/as_workspace/AndroidLogPrint/print_plugin_repo' }
+        google()
+        jcenter()
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', includes: ['*.jar'])
+
+    implementation gradleApi()
+    implementation localGroovy()
+
+    implementation 'com.android.tools.build:gradle:4.0.0'
+
+    //ASM相关依赖
+    implementation 'org.ow2.asm:asm:7.2'
+    implementation 'org.ow2.asm:asm-commons:7.2'
+
+    implementation 'com.phl:print-transform:1.0.0'
+}
+
+group = 'com.phl.print.plugin'
+version = '1.0.0'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('../print_plugin_repo'))
+        }
+    }
+}
+
+publish {
+    userOrg = 'foxwell'
+    groupId = 'com.phl'
+    artifactId = 'print-logline-plugin'
+    publishVersion = '1.0.0'
+    desc = 'A easy plugin base ASM, You can add a line number into every lines of your logcat.From Leaking/Hunter'
+    licences = ['Apache-2.0']
+}

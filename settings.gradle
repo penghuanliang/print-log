@@ -1,0 +1,4 @@
+include ':print-logline-plugin'
+include ':print-transform'
+include ':app'
+rootProject.name = "AndroidLogPrint"
