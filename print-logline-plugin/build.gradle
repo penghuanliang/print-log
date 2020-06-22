@@ -1,6 +1,6 @@
 apply plugin: 'groovy'
 apply plugin: 'maven'
-apply plugin: 'com.novoda.bintray-release'
+//apply plugin: 'com.novoda.bintray-release'
 
 buildscript {
     repositories {
@@ -22,11 +22,11 @@ dependencies {
     implementation 'org.ow2.asm:asm:7.2'
     implementation 'org.ow2.asm:asm-commons:7.2'
 
-    implementation 'com.phl:print-transform:1.0.0'
+    implementation 'com.phl:print-transform:0.0.1'
 }
 
 group = 'com.phl.print.plugin'
-version = '1.0.0'
+version = '0.0.2'
 
 uploadArchives {
     repositories {
@@ -34,13 +34,4 @@ uploadArchives {
             repository(url: uri('../print_plugin_repo'))
         }
     }
-}
-
-publish {
-    userOrg = 'foxwell'
-    groupId = 'com.phl'
-    artifactId = 'print-logline-plugin'
-    publishVersion = '1.0.0'
-    desc = 'A easy plugin base ASM, You can add a line number into every lines of your logcat.From Leaking/Hunter'
-    licences = ['Apache-2.0']
 }

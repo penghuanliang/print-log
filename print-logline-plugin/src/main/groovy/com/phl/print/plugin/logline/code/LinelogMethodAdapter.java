@@ -9,7 +9,7 @@ public class LinelogMethodAdapter extends MethodVisitor implements Opcodes {
     private int lineNumber;
 
     public LinelogMethodAdapter(MethodVisitor methodVisitor) {
-        super(ASM7, methodVisitor);
+        super(ASM5, methodVisitor);
     }
 
     @Override

@@ -2,24 +2,21 @@ package com.phl.print.plugin.logline.code;
 
 import org.apache.commons.io.FileUtils;
 import org.gradle.api.Project;
-import org.objectweb.asm.AnnotationVisitor;
 import org.objectweb.asm.ClassWriter;
-import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 
 public class LineNumberLogFactory implements Opcodes {
 
     private static byte[] generateCode() {
         ClassWriter cw = new ClassWriter(0);
-        FieldVisitor fv;
         MethodVisitor mv;
-        AnnotationVisitor av0;
 
         cw.visit(V1_7, ACC_PUBLIC + ACC_SUPER, "com/phl/print_logline_library/LineNumberLog", null, "java/lang/Object", null);
 
@@ -405,11 +402,18 @@ public class LineNumberLogFactory implements Opcodes {
         return cw.toByteArray();
     }
 
-    public static void initClass(Project project) {
+    public static void initClass(Project project, String taskName) {
         try {
-            File file = project.file("build/intermediates/javac/debug/classes/com/phl/print_logline_library/LineNumberLog.class");
+            taskName = taskName.split("assemble")[1];
+            File file = project.file(String.format("build/intermediates/javac/%s/classes/com/phl/print_logline_library/LineNumberLog.class", taskName));
             if (!file.exists()) {
-                FileUtils.touch(file);
+                try {
+                    FileUtils.touch(file);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    //As from v1.3.If throw IOException create parent directory. So need create [LineNumberLog.class] file.
+                    file.createNewFile();
+                }
             }
             FileOutputStream fileOutputStream = new FileOutputStream(file);
             fileOutputStream.write(LineNumberLogFactory.generateCode());
