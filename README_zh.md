@@ -1,16 +1,10 @@
-# print-log
+# print-log介绍
 
-[中文](/README_ch.md)
+**print-log**是通过[ASM](https://asm.ow2.io/index.html)在编译阶段直接操纵class字节码文件，为你项目中的Log日志添加行数。只在``debug``模式下有效。
 
-Pint-log is a android gradle plugin based on [ASM](https://asm.ow2.io/) and [Gradle Transform API](http://tools.android.com/tech-docs/new-build-system/transform-api).  you can add a line number into every lines of your logcat. Only debug mode available.
+# 引入
 
-## Gradle compatibility
-
-The plugin officially supports only Gradle 6.1.1+.
-
-## Add print-log to your project
-
-Add the following Gradle configuration to your Android project. In your root ``build.gradle`` file:
+在根目录下中build.gradle添加:
 
 ```groovy
 buildscript {
@@ -25,20 +19,16 @@ buildscript {
 }
 ```
 
-In your app modules ``app/build.gradle`` file:
+其次在``app/build.gradle``引用插件即可：
 
 ```groovy
 apply plugin: 'com.android.application'
 apply plugin: 'print-plugin' // apply plugin
 ```
 
-## Thanks
 
-- [Hunter](https://github.com/Leaking/Hunter)
 
-- [ASM](https://asm.ow2.io/asm4-guide.pdf) asm4-guide.pdf
-
-## License
+# License
 
 ```
    Copyright CoderHL [https://github.com/penghuanliang/print-log]
@@ -55,4 +45,3 @@ apply plugin: 'print-plugin' // apply plugin
    See the License for the specific language governing permissions and
    limitations under the License.
 ```
-
