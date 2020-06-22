@@ -1,0 +1,15 @@
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+    def groupProjectID = 'com.phl'
+    def artifactProjectID = 'print-transform'
+    def publishVersionID = "0.0.1"
+
+    userOrg = 'CoderHuanLiang'
+    repoName = 'minecodera'
+    groupId = groupProjectID
+    artifactId = artifactProjectID
+    publishVersion = publishVersionID
+    desc = 'A easy plugin base ASM, You can add a line number into every lines of your logcat.'
+    website = 'https://github.com/penghuanliang/print-log'
+}
