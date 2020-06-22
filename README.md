@@ -1,6 +1,6 @@
 # print-log
 
-[中文](/README_ch.md)
+[中文](README_zh.md)
 
 Pint-log is a android gradle plugin based on [ASM](https://asm.ow2.io/) and [Gradle Transform API](http://tools.android.com/tech-docs/new-build-system/transform-api).  you can add a line number into every lines of your logcat. Only debug mode available.
 
