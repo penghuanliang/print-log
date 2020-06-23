@@ -31,9 +31,9 @@ apply plugin: 'print-plugin' // apply plugin
 ```groovy
 apply plugin: 'com.android.application'
 
-//add ignore packages
+//add ignore packages or class
 printExt{
-    ignoreClass=["com.phl.androidlogprint.util","com.orhanobut.logger"]
+    ignoreClass=["com.orhanobut.logger","com.phl.androidlogprint.util.PrintUtil"]
 }
 
 dependencies {

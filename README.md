@@ -37,9 +37,9 @@ If your project contains other Log dependencies，you can exclude it. In your ap
 ```groovy
 apply plugin: 'com.android.application'
 
-//add ignore packages
+//add ignore packages or class
 printExt{
-    ignoreClass=["com.phl.androidlogprint.util","com.orhanobut.logger"]
+    ignoreClass=["com.orhanobut.logger","com.phl.androidlogprint.util.PrintUtil"]
 }
 
 dependencies {
