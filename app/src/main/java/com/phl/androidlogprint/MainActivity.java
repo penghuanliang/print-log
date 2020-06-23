@@ -5,6 +5,10 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
+import com.phl.androidlogprint.util.PrintUtil;
+
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
 
@@ -30,5 +34,9 @@ public class MainActivity extends AppCompatActivity {
         Log.w(TAG, "onCreate");
         Log.w(TAG, "onCreate", throwable);
         Log.w(TAG, throwable);
+
+        PrintUtil.d(TAG, "PrintUtil---->", "onCreate()");
+        Logger.addLogAdapter(new AndroidLogAdapter());
+        Logger.e(TAG, "Logger---->", "onCreate()");
     }
 }

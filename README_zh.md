@@ -14,7 +14,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.0'
-        classpath 'com.phl:print-logline-plugin:0.0.2' // add plugin
+        classpath 'com.phl:print-logline-plugin:0.0.3' // add plugin
     }
 }
 ```
@@ -26,7 +26,28 @@ apply plugin: 'com.android.application'
 apply plugin: 'print-plugin' // apply plugin
 ```
 
+如果你的项目中已经依赖了其它日志库，你可以在你的``app/build.gradle``添加以下扩展对他们进行忽略：
 
+```groovy
+apply plugin: 'com.android.application'
+
+//add ignore packages
+printExt{
+    ignoreClass=["com.phl.androidlogprint.util","com.orhanobut.logger"]
+}
+
+dependencies {
+    implementation 'com.orhanobut:logger:2.2.0'
+}
+```
+
+
+
+## 致谢
+
+- [Hunter](https://github.com/Leaking/Hunter)
+
+- [ASM](https://asm.ow2.io/asm4-guide.pdf) asm4-guide.pdf
 
 # License
 

@@ -17,6 +17,8 @@ public class LoglinePlugin implements Plugin<Project> {
     public void apply(Project project) {
         AppExtension appExtension = (AppExtension) project.getProperties().get("android");
 
+        project.getExtensions().create("printExt", PrintExt.class);
+
         List<String> taskNames = project.getGradle().getStartParameter().getTaskNames();
 
         String runTaskName = null;
@@ -36,6 +38,14 @@ public class LoglinePlugin implements Plugin<Project> {
         if (matcher.find()) {
             LineNumberLogFactory.initClass(project, runTaskName);
         }
+
+
+        project.afterEvaluate(partProject -> {
+            PrintExt printExt = partProject.getExtensions().getByType(PrintExt.class);
+            PrintExtUtil.getInstance().init(printExt);
+        });
+
+
         appExtension.registerTransform(new LinelogTransform(project), Collections.EMPTY_LIST);
     }
 

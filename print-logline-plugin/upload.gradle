@@ -3,10 +3,10 @@ apply plugin: 'com.novoda.bintray-release'
 publish {
     def groupProjectID = 'com.phl'
     def artifactProjectID = 'print-logline-plugin'
-    def publishVersionID = "0.0.2"
+    def publishVersionID = "0.0.3"
 
-    userOrg = 'CoderHuanLiang'
-    repoName = 'minecodera'
+    userOrg = 'minecodera'
+    repoName = 'maven'
     groupId = groupProjectID
     artifactId = artifactProjectID
     publishVersion = publishVersionID

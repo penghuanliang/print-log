@@ -12,15 +12,11 @@ import java.io.IOException;
 
 public class LinelogTransform extends BaseTransform {
 
-    private Project project;
-    private LinelogExtension linelogExtension;
-    public static final String LINE_LOG_NAME = "linelogExt";
+    private PrintExt printExt;
 
     public LinelogTransform(Project project) {
         super(project);
-        this.project = project;
-        project.getExtensions().create(LINE_LOG_NAME, LinelogExtension.class);
-        this.linelogExtension = (LinelogExtension) project.getExtensions().getByName(LINE_LOG_NAME);
+        this.printExt = (PrintExt) project.getExtensions().getByName("printExt");
         this.bytecodeWeaver = new LoglineWeaver();
     }
 
@@ -31,6 +27,6 @@ public class LinelogTransform extends BaseTransform {
 
     @Override
     protected RunVariant getRunVariant() {
-        return linelogExtension.runVariant;
+        return printExt.runVariant;
     }
 }

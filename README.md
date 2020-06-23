@@ -20,7 +20,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.0'
-        classpath 'com.phl:print-logline-plugin:0.0.2' // add plugin
+        classpath 'com.phl:print-logline-plugin:0.0.3' // add plugin
     }
 }
 ```
@@ -31,6 +31,23 @@ In your app modules ``app/build.gradle`` file:
 apply plugin: 'com.android.application'
 apply plugin: 'print-plugin' // apply plugin
 ```
+
+If your project contains other Log dependencies，you can exclude it. In your app modules ``app/build.gradle`` file  add ``printExt`` extension:
+
+```groovy
+apply plugin: 'com.android.application'
+
+//add ignore packages
+printExt{
+    ignoreClass=["com.phl.androidlogprint.util","com.orhanobut.logger"]
+}
+
+dependencies {
+    implementation 'com.orhanobut:logger:2.2.0'
+}
+```
+
+
 
 ## Thanks
 

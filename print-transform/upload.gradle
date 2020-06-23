@@ -5,8 +5,8 @@ publish {
     def artifactProjectID = 'print-transform'
     def publishVersionID = "0.0.1"
 
-    userOrg = 'CoderHuanLiang'
-    repoName = 'minecodera'
+    userOrg = 'minecodera'
+    repoName = 'maven'
     groupId = groupProjectID
     artifactId = artifactProjectID
     publishVersion = publishVersionID
